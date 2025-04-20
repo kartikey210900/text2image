@@ -1,0 +1,354 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Full-Page Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light Mode - Gunmetal gray to slate blue gradient */
+.app-container.light {
+  background: linear-gradient(135deg, #2A2E35 0%, #4B5EAA 100%);
+  color: #F7FAFC;
+}
+
+/* Dark Mode - Charcoal black to deep teal */
+.app-container.dark {
+  background: linear-gradient(135deg, #0D1117 0%, #1A3C34 100%);
+  color: #E2E8F0;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(90deg, #00B4FF, #39FF14); /* Neon blue to lime green */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 1s ease-out;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  animation: slideUp 1s ease-out;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.app-container.light .theme-toggle {
+  background: rgba(0, 0, 0, 0.2); /* Darker frosted for light mode */
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(0, 180, 255, 0.2); /* Blue glow on hover */
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Input Section (for ImageGenerator) */
+.input-section {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 2rem;
+  animation: slideUp 1s ease-out;
+}
+
+/* Auth Form (for Login/Signup) */
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: slideUp 1s ease-out;
+}
+
+.form-group {
+  width: 100%;
+}
+
+/* Shared Input Styles */
+.prompt-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15); /* Frosted glass for dark mode */
+  backdrop-filter: blur(10px);
+  color: #E2E8F0; /* Default text for dark mode */
+  outline: none;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Light Mode Input */
+.app-container.light .prompt-input {
+  background: rgba(0, 0, 0, 0.2); /* Darker frosted glass for contrast */
+  color: #F7FAFC; /* Off-white text for readability */
+}
+
+/* Input Focus */
+.prompt-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 180, 255, 0.5); /* Neon blue outline */
+  transform: translateY(-2px);
+}
+
+/* Placeholder */
+.prompt-input::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Dark mode */
+}
+
+.app-container.light .prompt-input::placeholder {
+  color: rgba(247, 250, 252, 0.7); /* Light mode */
+}
+
+/* Error Message */
+.error-message {
+  color: #39FF14; /* Lime green */
+  background: rgba(57, 255, 20, 0.1);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #39FF14;
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Auth Link */
+.auth-link {
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.auth-link a {
+  color: #00B4FF; /* Neon blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #39FF14; /* Lime green */
+}
+
+/* Shared Button Styles */
+.generate-button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00B4FF, #39FF14); /* Blue to green */
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.generate-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 180, 255, 0.4); /* Blue glow */
+}
+
+.generate-button:disabled {
+  background: #4B4B4B;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Output Section (for ImageGenerator) */
+.output-section {
+  width: 100%;
+  max-width: 800px;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top:  hafif: 5px solid #39FF14; /* Lime green spinner */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Image Wrapper */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  animation: fadeIn 1s ease-out;
+}
+
+.generated-image {
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.generated-image:hover {
+  transform: scale(1.02);
+}
+
+.download-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #00B4FF; /* Neon blue */
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.download-button:hover {
+  background: #39FF14; /* Switch to lime green */
+  transform: translateY(-2px);
+}
+
+/* Placeholder */
+.placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .input-section,
+  .auth-form {
+    flex-direction: column;
+  }
+
+  .prompt-input,
+  .generate-button {
+    width: 100%;
+  }
+
+  .generated-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.6rem;
+  }
+}

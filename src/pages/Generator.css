@@ -1,0 +1,27 @@
+textarea.prompt-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #e74c3c;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
