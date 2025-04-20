@@ -23,7 +23,12 @@ console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not set');
 console.log('HUGGING_FACE_API_KEY:', process.env.HUGGING_FACE_API_KEY ? 'Set' : 'Not set');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
